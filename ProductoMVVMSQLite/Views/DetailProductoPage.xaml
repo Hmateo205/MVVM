@@ -23,6 +23,7 @@
             </TableRoot>
         </TableView>
         <Button Text="Guardad Producto"
-            Command="{Binding GuardarProducto}"/>
+            Command="{Binding GuardarProducto}"
+                BackgroundColor="Beige"/>
     </VerticalStackLayout>
 </ContentPage>
