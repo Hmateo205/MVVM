@@ -1,48 +1,43 @@
-﻿using System;
+﻿using ProductoMVVMSQLite.Models;
+using ProductoMVVMSQLite.Utils;
+using PropertyChanged;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ProductoMVVMSQLite.Models;
-using ProductoMVVMSQLite.Utils;
-using ProductoMVVMSQLite.Views;
-using PropertyChanged;
 using System.Windows.Input;
 
 namespace ProductoMVVMSQLite.ViewModels
 {
     [AddINotifyPropertyChangedInterface]
-    public class NuevoProductoViewModel
+    public class HJ_DetailProductoViewModel
     {
-
         private int _idProducto = 0;
         public string Nombre { get; set; }
         public string Cantidad { get; set; }
         public string Descripcion { get; set; }
         private HJ_Producto ProductoEncontrado { get; set; }
 
-        public NuevoProductoViewModel()
-        {
+        public HJ_DetailProductoViewModel() { }
 
-        }
-
-
-        public NuevoProductoViewModel(HJ_Producto producto)
+        public HJ_DetailProductoViewModel (HJ_Producto producto)
         {
             _idProducto = producto.IdProducto;
             ProductoEncontrado = producto;
             Nombre = producto.Nombre;
             Descripcion = producto.Descripcion;
             Cantidad = producto.Cantidad.ToString();
-            
         }
-        public NuevoProductoViewModel(int IdProducto)
+
+        public HJ_DetailProductoViewModel(int IdProducto)
         {
             _idProducto = IdProducto;
             ProductoEncontrado = App.productoRepository.Get(_idProducto);
             Nombre = ProductoEncontrado.Nombre;
             Descripcion = ProductoEncontrado.Descripcion;
             Cantidad = ProductoEncontrado.Cantidad.ToString();
+
         }
 
         public ICommand GuardarProducto =>
@@ -64,16 +59,14 @@ namespace ProductoMVVMSQLite.ViewModels
                     ProductoEncontrado.Nombre = Nombre;
                     ProductoEncontrado.Cantidad = Int32.Parse(Cantidad);
                     ProductoEncontrado.Descripcion = Descripcion;
-                    
+
                     App.productoRepository.Update(ProductoEncontrado);
 
                 }
-                Util.ListaProductos.Clear();
-                App.productoRepository.GetAll().ForEach(Util.ListaProductos.Add);
+                HJ_Util.ListaProductos.Clear();
+                App.productoRepository.GetAll().ForEach(HJ_Util.ListaProductos.Add);
                 await App.Current.MainPage.Navigation.PopAsync();
             });
-
-        
 
     }
 }

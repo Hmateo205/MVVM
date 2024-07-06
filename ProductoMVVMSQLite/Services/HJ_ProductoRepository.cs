@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace ProductoMVVMSQLite.Services
 {
-    public class ProductoRepository
+    public class HJ_ProductoRepository
     {
         SQLiteConnection connection;
-        public ProductoRepository() {
+        public HJ_ProductoRepository() {
 
-            connection = new SQLiteConnection(Util.DataBasePath, Util.Flags);
+            connection = new SQLiteConnection(HJ_Util.DataBasePath, HJ_Util.Flags);
             connection.CreateTable<HJ_Producto>();
         
         }

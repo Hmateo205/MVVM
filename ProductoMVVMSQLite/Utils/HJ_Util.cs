@@ -9,7 +9,7 @@ using System.Collections.ObjectModel;
 
 namespace ProductoMVVMSQLite.Utils
 {
-    public static class Util
+    public static class HJ_Util
     {
 
         public static ObservableCollection<HJ_Producto> ListaProductos { get; set; }

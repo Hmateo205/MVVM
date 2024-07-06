@@ -7,6 +7,6 @@ public partial class ProductoPage : ContentPage
 	public ProductoPage()
 	{
 		InitializeComponent();
-		BindingContext = new ProductoViewModel();
+		BindingContext = new HJ_ProductoViewModel();
 	}
 }

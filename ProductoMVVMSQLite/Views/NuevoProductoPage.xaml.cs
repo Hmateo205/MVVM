@@ -8,13 +8,13 @@ public partial class NuevoProductoPage : ContentPage
     public NuevoProductoPage()
     {
         InitializeComponent();
-        BindingContext = new NuevoProductoViewModel();
+        BindingContext = new HJ_NuevoProductoViewModel();
     }
 
     public NuevoProductoPage(int IdProducto)
     {
 		InitializeComponent();
         HJ_Producto producto = App.productoRepository.Get(IdProducto);
-        BindingContext = new NuevoProductoViewModel(producto);
+        BindingContext = new HJ_NuevoProductoViewModel(producto);
     }
 }

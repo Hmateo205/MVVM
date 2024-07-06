@@ -13,15 +13,15 @@ using System.Windows.Input;
 namespace ProductoMVVMSQLite.ViewModels
 {
     [AddINotifyPropertyChangedInterface]
-    public class ProductoViewModel
+    public class HJ_ProductoViewModel
     {
         public ObservableCollection<HJ_Producto> ListaProductos { get; set; }
 
-        public ProductoViewModel() {
+        public HJ_ProductoViewModel() {
 
-            Util.ListaProductos = new ObservableCollection<HJ_Producto>( App.productoRepository.GetAll());
+            HJ_Util.ListaProductos = new ObservableCollection<HJ_Producto>( App.productoRepository.GetAll());
 
-            ListaProductos = Util.ListaProductos;
+            ListaProductos = HJ_Util.ListaProductos;
 
 
         }
@@ -36,7 +36,7 @@ namespace ProductoMVVMSQLite.ViewModels
         {
            
                 App.productoRepository.Delete(producto);
-                Util.ListaProductos.Remove(producto);
+                HJ_Util.ListaProductos.Remove(producto);
             
         });
         public ICommand EditarProducto => new Command<HJ_Producto>(async (producto) =>
